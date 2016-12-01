@@ -19,7 +19,7 @@ if(!fs.existsSync('data')) {
 
 // Logs current date & error to scrapper-error.log when an error occurs
 const errorLogging = (err) => {
-	fs.appendFileSync('scrapper-error.log', '\n[' + errorDate + ']' + err, 'utf8');
+	fs.appendFileSync('scraper-error.log', '\n[' + errorDate + ']' + err, 'utf8');
 	throw err;
 };
 
