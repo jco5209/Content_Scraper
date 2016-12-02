@@ -9,6 +9,7 @@ let now = new Date();
 
 let today = dateFormat(now, 'isoDateTime').slice(0,10);
 let errorDate = dateFormat(now, 'dddd, mmmm dS, yyyy, h:MM:ss TT');	
+let shirtDate = dateFormat('yy/mm/dd, h:MM:ss TT');
 
 // Checks if directory 'data' exists
 if(!fs.existsSync('data')) {
@@ -19,12 +20,13 @@ if(!fs.existsSync('data')) {
 
 // Logs current date & error to scrapper-error.log when an error occurs
 const errorLogging = (err) => {
-	fs.appendFileSync('scraper-error.log', '\n[' + errorDate + ']' + err, 'utf8');
-	throw err;
+	let errorMsg = ' An error has occured: ' + err.message + ' | Error code: ' + err.code;
+	fs.appendFileSync('scraper-error.log', '\n[' + errorDate + ']' + errorMsg, 'utf8');
+	throw errorMsg;
 };
 
 // Scrapes link which leads to /shirts.php
-x('http://shirts4mike.com', 'div.button a@href')((err, mainObj) => {
+x('http://shirts4Mike.com', 'div.button a@href')((err, mainObj) => {
 	if(err) errorLogging(err);
 
 	// Crawls to /shirts.php & Scrape each shirt link
@@ -48,7 +50,7 @@ x('http://shirts4mike.com', 'div.button a@href')((err, mainObj) => {
 				if(err) errorLogging(err);
 
 				objShirts.URL = objURL[i]; 
-				objShirts.Time = new Date(); 
+				objShirts.Time = shirtDate;
 				--callsRemaining;
 				data.push(objShirts);
 

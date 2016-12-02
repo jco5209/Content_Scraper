@@ -1,15 +1,27 @@
 {
-  "name": "package.json",
+  "name": "content_scraper",
   "version": "1.0.0",
-  "description": "xray scraper - dependencies include: npm xray && ( an npm csv creator perhaps )",
-  "main": "xray-scrape.js",
+  "description": "Webscraper which creates csv file from results",
+  "main": "scraper.js",
+  "dependencies": {
+    "dateformat": "^2.0.0",
+    "eslint": "^3.11.1",
+    "eslint-config-google": "^0.7.1",
+    "json2csv": "^3.7.2",
+    "x-ray": "^2.3.1"
+  },
+  "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jco5209/Content_Scraper.git"
+  },
+  "author": "Justin Coen",
   "license": "ISC",
-  "devDependencies": {
-    "eslint": "^3.11.1",
-    "eslint-config-google": "^0.7.1"
-  }
+  "bugs": {
+    "url": "https://github.com/jco5209/Content_Scraper/issues"
+  },
+  "homepage": "https://github.com/jco5209/Content_Scraper#readme"
 }
